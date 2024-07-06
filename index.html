@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+    <div class="row">
+        <div class="card col-4">
+            <h1 class="text-center text-primary">title</h1>
+            <img src="" alt="">
+            <p>description</p>
+            <span>pric</span>
+            <button class="btn btn-danger">Buy!</button>
+        </div>    </div>
+
+
+    <script src="./bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+async function allData(){
+let data =await fetch("https://fakestoreapi.com/products");
+let dataget =await data.json();
+    let res =await dataget.map((elem)=>{
+return`    <div class="row d-flex  flex-row justify-content-evenly align-items-center">
+<div class="card col-4  mb-5">
+    <h1 class="text-center text-primary">${elem.title}</h1>
+    <img src="${elem.image}" alt="">
+    <p>${elem.description}</p>
+    <span>${elem.price}</span>
+    <button class="btn btn-danger">Buy!</button>
+</div> <hr>   </div>`;
+});
+document.querySelector(".row").innerHTML=res
+
+}
+
+allData();
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
